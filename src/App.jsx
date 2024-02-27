@@ -1,11 +1,11 @@
 import { useState } from "react";
 import "./App.css";
-import Form from "./components/Form.jsx";
+import GeneralInfo from "./components/GeneralInfo";
 
 function App() {
   return (
     <>
-      <Form />
+      <GeneralInfo />
     </>
   );
 }
