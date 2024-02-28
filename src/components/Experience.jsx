@@ -2,7 +2,7 @@ import { useState } from "react";
 
 export default function Experience() {
   return (
-    <div>
+    <div className="experience-detail">
       <form>
         <label>
           Company Name

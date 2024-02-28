@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "../styles/generalInfo.css";
 
 export default function GeneralInfo() {
   const [fullName, setFullName] = useState("");
@@ -81,18 +82,13 @@ export default function GeneralInfo() {
   );
 }
 
-function PrintPersonalDetails({
-  submit,
-  fullName,
-  email,
-  phoneNumber,
-  address,
-}) {
+function PrintPersonalDetails({ fullName, email, phoneNumber, address }) {
   return (
     <>
       <div className="personal-details-name">{fullName}</div>
       <div className="personal-details-bottom">
-        {email} | {phoneNumber} | {address}
+        {email} {phoneNumber}
+        {address}
       </div>
     </>
   );

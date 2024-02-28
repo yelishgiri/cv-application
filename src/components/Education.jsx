@@ -1,6 +1,7 @@
 import { useState } from "react";
-
+import { v4 as uuidv4 } from "uuid";
 export default function Education() {
+  const universitiesInfo = [];
   const [universityName, setUniversityName] = useState("");
   const [degreeName, setDegreeName] = useState("");
   const [uniLocation, setUniLocation] = useState("");
@@ -15,7 +16,7 @@ export default function Education() {
     setDegreeName(e.target.value);
   }
 
-  function handleUniLocatioChange(e) {
+  function handleUniLocationChange(e) {
     setUniLocation(e.target.value);
   }
 
@@ -26,62 +27,115 @@ export default function Education() {
   function handleUniEndDate(e) {
     setUniEndDate(e.target.value);
   }
+
+  function onSubmission(e) {
+    e.preventDefault();
+    universitiesInfo.push({
+      universityName: universityName,
+      degreeName: degreeName,
+      uniLocation: uniLocation,
+      uniStartDate: uniStartDate,
+      uniEndDate: uniEndDate,
+      id: uuidv4(),
+    });
+  }
+
+  function remove(e) {
+    i = universitiesInfo.findIndex((uniObject) => e.target.id === uniObject.id);
+    universitiesInfo.splice(i, 1);
+  }
+
   return (
     // A Form For The Education Field
     // Things to fix how to make it appear as many times as the user wants
     // Then have a button to save it and display it so gotta have a display value
     // But also have to store previous version so that it actually stays it the memory
-    <div>
-      <label>
-        University
-        <input
-          type="text"
-          id="universityName"
-          name="universityName"
-          value={universityName}
-          onChange={handleUniversityChange}
-        />
-      </label>
-      <label>
-        Degree
-        <input
-          type="text"
-          id="degreeName"
-          name="degreeName"
-          value={degreeName}
-          onChange={handleDegreeChange}
-        />
-      </label>
-      <label>
-        Location
-        <input
-          type="text"
-          id="uniLocation"
-          name="uniLocation"
-          value={uniLocation}
-          onChange={handleUniLocatioChange}
-        />
-      </label>
-      <label>
-        Start Date
-        <input
-          type="date"
-          id="uniStartDate"
-          name="uniStartDate"
-          value={uniStartDate}
-          onChange={handleUniStartDate}
-        />
-      </label>
-      <label>
-        End Date
-        <input
-          type="date"
-          id="uniEndDate"
-          name="uniEndDate"
-          value={uniEndDate}
-          onChange={handleUniEndDate}
-        />
-      </label>
+    <div className="university-details">
+      <form onSubmit={onSubmission}>
+        <label>
+          University
+          <input
+            type="text"
+            id="universityName"
+            name="universityName"
+            value={universityName}
+            onChange={handleUniversityChange}
+          />
+        </label>
+        <label>
+          Degree
+          <input
+            type="text"
+            id="degreeName"
+            name="degreeName"
+            value={degreeName}
+            onChange={handleDegreeChange}
+          />
+        </label>
+        <label>
+          Location
+          <input
+            type="text"
+            id="uniLocation"
+            name="uniLocation"
+            value={uniLocation}
+            onChange={handleUniLocationChange}
+          />
+        </label>
+        <label>
+          Start Date
+          <input
+            type="date"
+            id="uniStartDate"
+            name="uniStartDate"
+            value={uniStartDate}
+            onChange={handleUniStartDate}
+          />
+        </label>
+        <label>
+          End Date
+          <input
+            type="date"
+            id="uniEndDate"
+            name="uniEndDate"
+            value={uniEndDate}
+            onChange={handleUniEndDate}
+          />
+        </label>
+        <button type="submit" onClick={onSubmission}>
+          Submit
+        </button>
+        <button type="button" onClick={remove}>
+          Remove
+        </button>
+      </form>
+      <PrintEducationDetails
+        universityName={universityName}
+        degreeName={degreeName}
+        uniLocation={uniLocation}
+        uniStartDate={uniStartDate}
+        uniEndDate={uniEndDate}
+      />
     </div>
+  );
+}
+function PrintEducationDetails({
+  universityName,
+  degreeName,
+  uniLocation,
+  uniStartDate,
+  uniEndDate,
+}) {
+  return (
+    <>
+      <div className="display-university-details">
+        <div className="uni-name">{universityName}</div>
+        <div className="degree-name">{degreeName}</div>
+        <div className="uni-location-name">{uniLocation}</div>
+        <div className="uni-dates">
+          {uniStartDate} - {uniEndDate}
+        </div>
+      </div>
+    </>
   );
 }
