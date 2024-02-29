@@ -87,8 +87,7 @@ function PrintPersonalDetails({ fullName, email, phoneNumber, address }) {
     <>
       <div className="personal-details-name">{fullName}</div>
       <div className="personal-details-bottom">
-        {email} {phoneNumber}
-        {address}
+        {email} {phoneNumber} {address}
       </div>
     </>
   );

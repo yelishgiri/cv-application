@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import { IoMdAddCircle } from "react-icons/io";
+import { IconContext } from "react-icons";
 export default function Education() {
   const universitiesInfo = [];
   const [universityName, setUniversityName] = useState("");
@@ -38,19 +40,36 @@ export default function Education() {
       uniEndDate: uniEndDate,
       id: uuidv4(),
     });
+    console.log(universitiesInfo);
   }
 
-  function remove(e) {
-    i = universitiesInfo.findIndex((uniObject) => e.target.id === uniObject.id);
+  // Function to remove education from profile
+  function removeEducation(e) {
+    let i = universitiesInfo.findIndex(
+      (uniObject) => e.target.id === uniObject.id
+    );
     universitiesInfo.splice(i, 1);
+    console.log(universitiesInfo);
   }
 
+  //Function to edit Education and --- Second Part Constantly Update it
+  function editEducation() {}
   return (
     // A Form For The Education Field
     // Things to fix how to make it appear as many times as the user wants
     // Then have a button to save it and display it so gotta have a display value
     // But also have to store previous version so that it actually stays it the memory
     <div className="university-details">
+      <IconContext.Provider value={{ size: "1em" }}>
+        <div className="education-component">
+          <div className="eudcation-header">Education</div>
+          <div>
+            <button type="button">
+              <IoMdAddCircle />
+            </button>
+          </div>
+        </div>
+      </IconContext.Provider>
       <form onSubmit={onSubmission}>
         <label>
           University
@@ -102,11 +121,12 @@ export default function Education() {
             onChange={handleUniEndDate}
           />
         </label>
-        <button type="submit" onClick={onSubmission}>
-          Submit
-        </button>
-        <button type="button" onClick={remove}>
+        <button type="submit">Submit</button>
+        <button type="button" onClick={removeEducation}>
           Remove
+        </button>
+        <button type="button" onClick={editEducation}>
+          Edit
         </button>
       </form>
       <PrintEducationDetails

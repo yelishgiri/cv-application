@@ -1,8 +1,20 @@
 import { useState } from "react";
+import { IoMdAddCircle } from "react-icons/io";
+import { IconContext } from "react-icons";
 
 export default function Experience() {
   return (
     <div className="experience-detail">
+      <IconContext.Provider value={{ size: "1em" }}>
+        <div className="experience-component">
+          <div className="experience-header">Experience</div>
+          <div>
+            <button type="button">
+              <IoMdAddCircle />
+            </button>
+          </div>
+        </div>
+      </IconContext.Provider>
       <form>
         <label>
           Company Name

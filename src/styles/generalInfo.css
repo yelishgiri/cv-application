@@ -2,3 +2,12 @@
   display: flex;
   flex-direction: column;
 }
+
+.personal-details-form {
+  width: 400px;
+  margin: 20px;
+  padding: 30px;
+}
+
+
+.personal-details-form
