@@ -2,14 +2,100 @@ import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { IoMdAddCircle } from "react-icons/io";
 import { IconContext } from "react-icons";
+import "../styles/education.css";
 export default function Education() {
   const universitiesInfo = [];
+
+  const [toggleForm, setToggleForm] = useState(false);
+
+  function onSubmission(e) {
+    e.preventDefault();
+    universitiesInfo.push({
+      universityName: universityName,
+      degreeName: degreeName,
+      uniLocation: uniLocation,
+      uniStartDate: uniStartDate,
+      uniEndDate: uniEndDate,
+      id: uuidv4(),
+    });
+    setToggleForm(false);
+
+    console.log(universitiesInfo);
+  }
+
+  // Function to remove education from profile
+  function removeEducation(e) {
+    let i = universitiesInfo.findIndex(
+      (uniObject) => e.target.id === uniObject.id
+    );
+    universitiesInfo.splice(i, 1);
+    console.log(universitiesInfo);
+  }
+
+  //Function to edit Education and --- Second Part Constantly Update it
+  function editEducation(e) {
+    let i = universitiesInfo.findIndex(
+      (uniObject) => () => e.target.id === uniObject.id
+    );
+  }
+
+  function changeToggleForm() {
+    setToggleForm(true);
+  }
+  return (
+    // A Form For The Education Field
+    // Things to fix how to make it appear as many times as the user wants
+    // Then have a button to save it and display it so gotta have a display value
+    // But also have to store previous version so that it actually stays it the memory
+    <div className="university-details">
+      <IconContext.Provider value={{ size: "2em" }}>
+        <div className="education-component">
+          <div className="eudcation-header">Education</div>
+          <div>
+            <button type="button" onClick={changeToggleForm}>
+              <IoMdAddCircle />
+            </button>
+          </div>
+        </div>
+      </IconContext.Provider>
+      <div>
+        {toggleForm && (
+          <EducationForm
+            onSubmission={onSubmission}
+            removeEducation={removeEducation}
+          />
+        )}{" "}
+      </div>
+    </div>
+  );
+}
+function PrintEducationDetails({
+  universityName,
+  degreeName,
+  uniLocation,
+  uniStartDate,
+  uniEndDate,
+}) {
+  return (
+    <>
+      <div className="display-university-details">
+        <div className="uni-name">{universityName}</div>
+        <div className="degree-name">{degreeName}</div>
+        <div className="uni-location-name">{uniLocation}</div>
+        <div className="uni-dates">
+          {uniStartDate} - {uniEndDate}
+        </div>
+      </div>
+    </>
+  );
+}
+
+function EducationForm({ onSubmission, removeEducation }) {
   const [universityName, setUniversityName] = useState("");
   const [degreeName, setDegreeName] = useState("");
   const [uniLocation, setUniLocation] = useState("");
   const [uniStartDate, setUniStartDate] = useState("");
   const [uniEndDate, setUniEndDate] = useState("");
-
   function handleUniversityChange(e) {
     setUniversityName(e.target.value);
   }
@@ -30,46 +116,8 @@ export default function Education() {
     setUniEndDate(e.target.value);
   }
 
-  function onSubmission(e) {
-    e.preventDefault();
-    universitiesInfo.push({
-      universityName: universityName,
-      degreeName: degreeName,
-      uniLocation: uniLocation,
-      uniStartDate: uniStartDate,
-      uniEndDate: uniEndDate,
-      id: uuidv4(),
-    });
-    console.log(universitiesInfo);
-  }
-
-  // Function to remove education from profile
-  function removeEducation(e) {
-    let i = universitiesInfo.findIndex(
-      (uniObject) => e.target.id === uniObject.id
-    );
-    universitiesInfo.splice(i, 1);
-    console.log(universitiesInfo);
-  }
-
-  //Function to edit Education and --- Second Part Constantly Update it
-  function editEducation() {}
   return (
-    // A Form For The Education Field
-    // Things to fix how to make it appear as many times as the user wants
-    // Then have a button to save it and display it so gotta have a display value
-    // But also have to store previous version so that it actually stays it the memory
-    <div className="university-details">
-      <IconContext.Provider value={{ size: "1em" }}>
-        <div className="education-component">
-          <div className="eudcation-header">Education</div>
-          <div>
-            <button type="button">
-              <IoMdAddCircle />
-            </button>
-          </div>
-        </div>
-      </IconContext.Provider>
+    <>
       <form onSubmit={onSubmission}>
         <label>
           University
@@ -125,37 +173,7 @@ export default function Education() {
         <button type="button" onClick={removeEducation}>
           Remove
         </button>
-        <button type="button" onClick={editEducation}>
-          Edit
-        </button>
       </form>
-      <PrintEducationDetails
-        universityName={universityName}
-        degreeName={degreeName}
-        uniLocation={uniLocation}
-        uniStartDate={uniStartDate}
-        uniEndDate={uniEndDate}
-      />
-    </div>
-  );
-}
-function PrintEducationDetails({
-  universityName,
-  degreeName,
-  uniLocation,
-  uniStartDate,
-  uniEndDate,
-}) {
-  return (
-    <>
-      <div className="display-university-details">
-        <div className="uni-name">{universityName}</div>
-        <div className="degree-name">{degreeName}</div>
-        <div className="uni-location-name">{uniLocation}</div>
-        <div className="uni-dates">
-          {uniStartDate} - {uniEndDate}
-        </div>
-      </div>
     </>
   );
 }
