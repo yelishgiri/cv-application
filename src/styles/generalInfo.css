@@ -1,13 +1,58 @@
-.personal-details-form > form > label {
+.personal-details-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: 20px;
+}
+
+.personal-details-form {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.personal-details-form form {
   display: flex;
   flex-direction: column;
 }
 
-.personal-details-form {
-  width: 400px;
-  margin: 20px;
-  padding: 30px;
+.personal-details-form label {
+  margin-bottom: 10px;
 }
 
+.personal-details-form input {
+  margin-top: 5px;
+  padding: 8px;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+}
 
-.personal-details-form
+button {
+  margin-top: 20px;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.personal-details-display {
+  flex: 1;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.personal-details-name {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.personal-details-bottom {
+  font-size: 14px;
+  line-height: 1.6;
+}
