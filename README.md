@@ -2,7 +2,11 @@
 
 [Project Link](https://cv-application-omega-six.vercel.app/)
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
+[Demo](https://github.com/user-attachments/assets/64dce429-38a5-497f-b107-cf8282ff850f)
+
+
+![License](https://img.shields.io/badge/license-MIT-blue.svg)!
+
 
 A modern and responsive CV Builder application where users can input their details through forms and preview their CV dynamically in a professional format. The application uses React for a seamless user experience and offers a clean, side-by-side layout for input forms and CV preview.
 
