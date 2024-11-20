@@ -2,7 +2,7 @@
 
 [Project Link](https://cv-application-omega-six.vercel.app/)
 
-[Demo](https://github.com/user-attachments/assets/64dce429-38a5-497f-b107-cf8282ff850f)
+![Demo](https://github.com/user-attachments/assets/64dce429-38a5-497f-b107-cf8282ff850f)
 
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)!
