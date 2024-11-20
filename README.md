@@ -2,6 +2,10 @@
 
 [Project Link](https://cv-application-omega-six.vercel.app/)
 
+## Screenshots
+
+### Full Page View
+
 ![Demo](https://github.com/user-attachments/assets/64dce429-38a5-497f-b107-cf8282ff850f)
 
 
@@ -21,14 +25,6 @@ A modern and responsive CV Builder application where users can input their detai
 - **React-Powered**: Built with React for efficient rendering and state management.
 
 ---
-
-## Screenshots
-
-### Full Page View
-
-<img alt="CV Builder Full Page" src="./screenshot_full_page.png" width="800px" />
-
-### Mobile View
 
 <img alt="CV Builder Mobile View" src="./screenshot_mobile_view.png" width="400px" />
 
