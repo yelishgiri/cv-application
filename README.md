@@ -1,8 +1,41 @@
-# React + Vite
+import React from 'react';
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# CV Builder Application
 
-Currently, two official plugins are available:
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+A modern and responsive CV Builder application where users can input their details through forms and preview their CV dynamically in a professional format. The application uses React for a seamless user experience and offers a clean, side-by-side layout for input forms and CV preview.
+
+---
+
+## Features
+
+- **Dynamic CV Preview**: Update and preview your CV in real time.
+- **Professional Design**: Clean and modern CV layout mimicking real-world CV standards.
+- **Side-by-Side Layout**: Forms on the left for data entry and a live preview on the right.
+- **Responsive Design**: Optimized for both desktop and mobile views.
+- **React-Powered**: Built with React for efficient rendering and state management.
+
+---
+
+## Screenshots
+
+### Full Page View
+
+<img alt="CV Builder Full Page" src="./screenshot_full_page.png" width="800px" />
+
+### Mobile View
+
+<img alt="CV Builder Mobile View" src="./screenshot_mobile_view.png" width="400px" />
+
+---
+
+## Technologies Used
+
+- **React**: Frontend library for building UI components.
+- **CSS Flexbox**: For a responsive and structured layout.
+- **HTML5**: Semantic structure for accessibility.
+- **JavaScript (ES6)**: Interactive functionalities and state management.
+
+---
+
