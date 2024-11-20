@@ -1,6 +1,6 @@
-import React from 'react';
-
 # CV Builder Application
+
+[Project Link](https://cv-application-omega-six.vercel.app/)
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
