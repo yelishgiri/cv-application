@@ -1,141 +1,68 @@
-import { useState } from "react";
-import "../styles/education.css";
-
-
-function PrintEducationDetails({
-  universityName,
-  degreeName,
-  uniLocation,
-  uniStartDate,
-  uniEndDate,
-}) {
-  return (
-    <>
-      <div className="display-university-details">
-        <div className="uni-name">{universityName}</div>
-        <div className="degree-name">{degreeName}</div>
-        <div className="uni-location-name">{uniLocation}</div>
-        <div className="uni-dates">
-          {uniStartDate} - {uniEndDate}
-        </div>
-      </div>
-    </>
-  );
-}
-
-
-
-
-export default function Education() {
-  const [form, setForm] = useState({
-    uniName: "",
-    uniDegree: "",
-    uniLocation: "",
-    uniStartDate: "",
-    uniEndDate: "",
-  });
-
-  function handleUniversityChange(e) {
-    setForm({
-      ...form,
-      uniName: e.target.value,
-    });
-  }
-
-  function handleDegreeChange(e) {
-    setForm({
-      ...form,
-      uniDegree: e.target.value,
-    });
-  }
-
-  function handleUniLocationChange(e) {
-    setForm({
-      ...form,
-      uniLocation: e.target.value,
-    });
-  }
-
-  function handleUniStartDate(e) {
-    setForm({
-      ...form,
-      uniStartDate: e.target.value,
-    });
-  }
-
-  function handleUniEndDate(e) {
-    setForm({
-      ...form,
-      uniEndDate: e.target.value,
-    });
-  }
+function Education({ form, setForm }) {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm((prevForm) => ({
+      ...prevForm,
+      [name]: value,
+    }));
+  };
 
   return (
-    <div className="university-details-container">
-      <div className="form-container">
-        <form>
-          <label>
-            University
-            <input
-              type="text"
-              id="universityName"
-              name="universityName"
-              value={form.uniName}
-              onChange={handleUniversityChange}
-            />
-          </label>
-          <label>
-            Degree
-            <input
-              type="text"
-              id="degreeName"
-              name="degreeName"
-              value={form.uniDegree}
-              onChange={handleDegreeChange}
-            />
-          </label>
-          <label>
-            Location
-            <input
-              type="text"
-              id="uniLocation"
-              name="uniLocation"
-              value={form.uniLocation}
-              onChange={handleUniLocationChange}
-            />
-          </label>
-          <label>
-            Start Date
-            <input
-              type="date"
-              id="uniStartDate"
-              name="uniStartDate"
-              value={form.uniStartDate}
-              onChange={handleUniStartDate}
-            />
-          </label>
-          <label>
-            End Date
-            <input
-              type="date"
-              id="uniEndDate"
-              name="uniEndDate"
-              value={form.uniEndDate}
-              onChange={handleUniEndDate}
-            />
-          </label>
-        </form>
-      </div>
-
-      <div className="display-education-container">
-        <PrintEducationDetails
-          universityName={form.uniName}
-          degreeName={form.uniDegree}
-          uniLocation={form.uniLocation}
-          uniStartDate={form.uniStartDate}
-          uniEndDate={form.uniEndDate}
+    <div>
+      <form className="cv-form">
+        <label>University</label>
+        <input
+          type="text"
+          name="uniName"
+          value={form.uniName}
+          onChange={handleChange}
         />
+        <label>Degree</label>
+        <input
+          type="text"
+          name="uniDegree"
+          value={form.uniDegree}
+          onChange={handleChange}
+        />
+        <label>Location</label>
+        <input
+          type="text"
+          name="uniLocation"
+          value={form.uniLocation}
+          onChange={handleChange}
+        />
+        <label>Start Date</label>
+        <input
+          type="date"
+          name="uniStartDate"
+          value={form.uniStartDate}
+          onChange={handleChange}
+        />
+        <label>End Date</label>
+        <input
+          type="date"
+          name="uniEndDate"
+          value={form.uniEndDate}
+          onChange={handleChange}
+        />
+      </form>
+
+      <div className="cv-details">
+        <div className="cv-details-item">
+          <span>University:</span> {form.uniName}
+        </div>
+        <div className="cv-details-item">
+          <span>Degree:</span> {form.uniDegree}
+        </div>
+        <div className="cv-details-item">
+          <span>Location:</span> {form.uniLocation}
+        </div>
+        <div className="cv-details-item">
+          <span>Dates:</span> {form.uniStartDate} - {form.uniEndDate}
+        </div>
       </div>
     </div>
   );
 }
+
+export default Education;

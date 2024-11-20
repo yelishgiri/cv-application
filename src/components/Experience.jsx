@@ -1,46 +1,68 @@
-import { useState } from "react";
-import { IoMdAddCircle } from "react-icons/io";
-import { IconContext } from "react-icons";
+function Experience({ form, setForm }) {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm((prevForm) => ({
+      ...prevForm,
+      [name]: value,
+    }));
+  };
 
-export default function Experience() {
   return (
-    <div className="experience-detail">
-      <IconContext.Provider value={{ size: "1em" }}>
-        <div className="experience-component">
-          <div className="experience-header">Experience</div>
-          <div>
-            <button type="button">
-              <IoMdAddCircle />
-            </button>
-          </div>
-        </div>
-      </IconContext.Provider>
-      <form>
-        <label>
-          Company Name
-          <input type="text" />
-        </label>
-        <label>
-          Position
-          <input type="text" />
-        </label>
-        <label>
-          Location
-          <input type="text" />
-        </label>
-        <label>
-          Start Date
-          <input type="date" />
-        </label>
-        <label>
-          End Date
-          <input type="date" />
-        </label>
-        <label>
-          Description
-          <input type="text" />
-        </label>
+    <div>
+      <form className="cv-form">
+        <label>Position</label>
+        <input
+          type="text"
+          name="jobPosition"
+          value={form.jobPosition}
+          onChange={handleChange}
+        />
+        <label>Organization</label>
+        <input
+          type="text"
+          name="jobOrganization"
+          value={form.jobOrganization}
+          onChange={handleChange}
+        />
+        <label>Location</label>
+        <input
+          type="text"
+          name="jobLocation"
+          value={form.jobLocation}
+          onChange={handleChange}
+        />
+        <label>Start Date</label>
+        <input
+          type="date"
+          name="jobStartDate"
+          value={form.jobStartDate}
+          onChange={handleChange}
+        />
+        <label>End Date</label>
+        <input
+          type="date"
+          name="jobEndDate"
+          value={form.jobEndDate}
+          onChange={handleChange}
+        />
       </form>
+
+      <div className="cv-details">
+        <div className="cv-details-item">
+          <span>Position:</span> {form.jobPosition}
+        </div>
+        <div className="cv-details-item">
+          <span>Organization:</span> {form.jobOrganization}
+        </div>
+        <div className="cv-details-item">
+          <span>Location:</span> {form.jobLocation}
+        </div>
+        <div className="cv-details-item">
+          <span>Dates:</span> {form.jobStartDate} - {form.jobEndDate}
+        </div>
+      </div>
     </div>
   );
 }
+
+export default Experience;
