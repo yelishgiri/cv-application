@@ -1,31 +1,7 @@
 import { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
-import { IoMdAddCircle } from "react-icons/io";
-import { IconContext } from "react-icons";
 import "../styles/education.css";
 
-function EducationAfterSubmission() {
-  // Function to remove education from profile
-  function removeEducation(e) {
-    let i = universitiesInfo.findIndex(
-      (uniObject) => e.target.id === uniObject.id
-    );
-    universitiesInfo.splice(i, 1);
-    console.log(universitiesInfo);
-  }
 
-  //Function to edit Education and --- Second Part Constantly Update it
-  function editEducation(e) {
-    let i = universitiesInfo.findIndex(
-      (uniObject) => () => e.target.id === uniObject.id
-    );
-  }
-
-  // A Form For The Education Field
-  // Things to fix how to make it appear as many times as the user wants
-  // Then have a button to save it and display it so gotta have a display value
-  // But also have to store previous version so that it actually stays it the memory
-}
 function PrintEducationDetails({
   universityName,
   degreeName,
@@ -47,90 +23,64 @@ function PrintEducationDetails({
   );
 }
 
-export default function Education() {
-  const universitiesInfo = [];
-  const [universityName, setUniversityName] = useState("");
-  const [degreeName, setDegreeName] = useState("");
-  const [uniLocation, setUniLocation] = useState("");
-  const [uniStartDate, setUniStartDate] = useState("");
-  const [uniEndDate, setUniEndDate] = useState("");
-  const [toggleForm, setToggleForm] = useState(false);
-  let booleanForEducation = false;
 
-  if (universitiesInfo.length > 0) {
-    booleanForEducation = true;
-  }
+
+
+export default function Education() {
+  const [form, setForm] = useState({
+    uniName: "",
+    uniDegree: "",
+    uniLocation: "",
+    uniStartDate: "",
+    uniEndDate: "",
+  });
 
   function handleUniversityChange(e) {
-    setUniversityName(e.target.value);
+    setForm({
+      ...form,
+      uniName: e.target.value,
+    });
   }
 
   function handleDegreeChange(e) {
-    setDegreeName(e.target.value);
+    setForm({
+      ...form,
+      uniDegree: e.target.value,
+    });
   }
 
   function handleUniLocationChange(e) {
-    setUniLocation(e.target.value);
+    setForm({
+      ...form,
+      uniLocation: e.target.value,
+    });
   }
 
   function handleUniStartDate(e) {
-    setUniStartDate(e.target.value);
+    setForm({
+      ...form,
+      uniStartDate: e.target.value,
+    });
   }
 
   function handleUniEndDate(e) {
-    setUniEndDate(e.target.value);
-  }
-
-  function handleEditing() {
-    setEditing(true);
-  }
-  function changeToggleForm() {
-    setToggleForm(true);
-  }
-
-  function onSubmission(e) {
-    e.preventDefault();
-    universitiesInfo.push({
-      universityName: universityName,
-      degreeName: degreeName,
-      uniLocation: uniLocation,
-      uniStartDate: uniStartDate,
-      uniEndDate: uniEndDate,
-      id: uuidv4(),
+    setForm({
+      ...form,
+      uniEndDate: e.target.value,
     });
-    setToggleForm(false);
-
-    console.log(universitiesInfo);
   }
 
   return (
-    <>
-      <div className="university-details">
-        <IconContext.Provider value={{ size: "2em" }}>
-          <div className="education-component">
-            <div className="eudcation-header">Education</div>
-            <div>
-              <button type="button" onClick={changeToggleForm}>
-                <IoMdAddCircle />
-              </button>
-            </div>
-          </div>
-        </IconContext.Provider>
-        <div className="print-education">
-          {booleanForEducation && (
-            <PrintEducationDetails universityName={universitiesInfo.name} />
-          )}
-        </div>
-      </div>
-      {toggleForm && (
-        <form onSubmit={onSubmission}>
+    <div className="university-details-container">
+      <div className="form-container">
+        <form>
           <label>
             University
             <input
               type="text"
               id="universityName"
               name="universityName"
-              value={universityName}
+              value={form.uniName}
               onChange={handleUniversityChange}
             />
           </label>
@@ -140,7 +90,7 @@ export default function Education() {
               type="text"
               id="degreeName"
               name="degreeName"
-              value={degreeName}
+              value={form.uniDegree}
               onChange={handleDegreeChange}
             />
           </label>
@@ -150,7 +100,7 @@ export default function Education() {
               type="text"
               id="uniLocation"
               name="uniLocation"
-              value={uniLocation}
+              value={form.uniLocation}
               onChange={handleUniLocationChange}
             />
           </label>
@@ -160,7 +110,7 @@ export default function Education() {
               type="date"
               id="uniStartDate"
               name="uniStartDate"
-              value={uniStartDate}
+              value={form.uniStartDate}
               onChange={handleUniStartDate}
             />
           </label>
@@ -170,17 +120,22 @@ export default function Education() {
               type="date"
               id="uniEndDate"
               name="uniEndDate"
-              value={uniEndDate}
+              value={form.uniEndDate}
               onChange={handleUniEndDate}
             />
           </label>
-          <button type="submit">Submit</button>
         </form>
-      )}
-    </>
+      </div>
+
+      <div className="display-education-container">
+        <PrintEducationDetails
+          universityName={form.uniName}
+          degreeName={form.uniDegree}
+          uniLocation={form.uniLocation}
+          uniStartDate={form.uniStartDate}
+          uniEndDate={form.uniEndDate}
+        />
+      </div>
+    </div>
   );
 }
-
-// sub goal render the education content on to the page like a editable thing in its won sub zone maybe add a state to display it but for now just add the component for it.
-
-// on edit provide a new form and replace that new forms value by identifying info and stuff with the previous value by copying with the rest operator

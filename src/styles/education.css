@@ -1,7 +1,80 @@
-.university-details > form > label {
+.university-details-container {
   display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
 }
 
-button {
-  width: 40px;
+.education-component {
+  flex: 1;
+}
+
+.education-header {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.form-container {
+  flex: 1;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form label {
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+form input {
+  margin-top: 5px;
+  padding: 10px;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+form button {
+  margin-top: 20px;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.display-education-container {
+  flex: 1;
+  padding: 20px;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.display-university-details {
+  margin-bottom: 10px;
+}
+
+.uni-name {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.degree-name,
+.uni-location-name,
+.uni-dates {
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #555;
 }

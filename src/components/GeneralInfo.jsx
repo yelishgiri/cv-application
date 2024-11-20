@@ -9,7 +9,6 @@ export default function GeneralInfo() {
     phoneNumber: "",
     address: "",
   });
-  const [submit, setSubmit] = useState(false);
 
 
   function handleFirstNameChange(e){
@@ -96,7 +95,6 @@ export default function GeneralInfo() {
               onChange={handleAddressChange}
             ></input>
           </label>
-          <button type="submit">Submit</button>
         </form>
       </div>
       <div className="personal-details-display">
